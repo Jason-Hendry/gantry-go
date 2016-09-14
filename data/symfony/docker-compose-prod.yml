@@ -1,0 +1,14 @@
+#
+main:
+  image: 770424809441.dkr.ecr.ap-southeast-2.amazonaws.com/gracepapers:$CIRCLE_BUILD_NUM
+  volumes:
+    - /var/log/gracepapers:/var/www/var/logs
+  environment:
+    SYMFONY__DATABASE__HOST: "production-db.cwhc13mjz3y2.ap-southeast-2.rds.amazonaws.com"
+    SYMFONY__DATABASE__NAME: "wp_steps"
+    SYMFONY__DATABASE__USER: "gracepapers"
+    SYMFONY__DATABASE__PASSWORD: "${DB_ROOT_PW}"
+    SYMFONY__PUBLIC__SITE: "http://gracepapers.com.au/"
+    SYMFONY__S3__BUCKET: "gracepapers-uploads-prod"
+    SYMFONY__IMGIX__URL: "gracepapers.imgix.net"
+    SYMFONY__PROGRAM__PATH: "/steps/"
